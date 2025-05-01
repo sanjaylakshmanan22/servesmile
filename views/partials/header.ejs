@@ -1,0 +1,45 @@
+<!-- <header>
+    <div class="left">
+        <a href="#" class="logo">ServeSmile</a>
+    </div>
+    <nav class="center">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="#">Donate</a></li>
+            <li><a href="#">Request</a></li>
+            <li><a href="#">Help</a></li>
+        </ul>
+    </nav>
+    <div class="right">
+        <a href="/login" class="login-register">Login/Register</a>
+    </div>
+</header> -->
+<style>
+    .logout-link,.login-register{
+        text-decoration: none;
+        color: white;
+    }
+</style>
+
+<header>
+    <div class="left">
+        <a href="#" class="logo">ServeSmile</a>
+    </div>
+    <nav class="center">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/donate">Donate</a></li>
+            <li><a href="/request">Request</a></li>
+            <li><a href="#">Help</a></li>
+        </ul>
+    </nav>
+    <div class="right">
+        <% if (userLoggedIn) { %>
+            <!-- Show profile symbol and logout if the user is logged in -->
+            <a href="/logout" class="logout-link">Logout</a>
+        <% } else { %>
+            <!-- Show Login/Register link if the user is not logged in -->
+            <a href="/login" class="login-register">Login/Register</a>
+        <% } %>
+    </div>
+</header>

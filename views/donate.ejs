@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate</title>
+    <link rel="stylesheet" href="/CSS/donate.css"> <!-- Link to the CSS file -->
+</head>
+<body>
+    <%- include('partials/header') %>
+
+    <main>
+        <div class="main-content">
+            <section class="donation-info">
+                <h1>Make a Difference</h1>
+                <p>Choose how you’d like to contribute—food or money. Click on your preferred option to proceed.</p>
+            </section>
+
+            <!-- Horizontal Buttons for Selection -->
+            <div class="donation-choice-buttons">
+                <button class="choice-button" onclick="toggleDonationForm('food')">Donate Food</button>
+                <button class="choice-button" onclick="toggleDonationForm('money')">Donate Money</button>
+            </div>
+
+            <!-- Food Donation Section -->
+            <section id="food-donation" class="donation-section">
+                <h2>Food Donation</h2>
+                <form action="/donate-food" method="POST" class="donation-form">
+                    <div class="form-group">
+                        <label for="food-item">Select or Enter Food Item:</label>
+                        <select id="food-item" name="food-item" class="input-field" onchange="handleFoodSelection()">
+                            <option value="Rice">Rice</option>
+                            <option value="Wheat">Wheat</option>
+                            <option value="Milk">Milk</option>
+                            <option value="Vegetables">Vegetables</option>
+                            <option value="Others">Others</option>
+                        </select>
+                        <input type="text" id="custom-food" name="custom-food" placeholder="Enter custom food item" class="input-field" style="display: none;">
+                    </div>
+                    <button type="submit" class="button">Donate Food</button>
+                </form>
+            </section>
+
+            <!-- Money Donation Section -->
+            <section id="money-donation" class="donation-section">
+                <h2>Money Donation</h2>
+                <form action="/donate-money" method="POST" class="donation-form">
+                    <div class="form-group">
+                        <label for="amount">Select Donation Amount:</label>
+                        <select id="amount" name="amount" class="input-field" onchange="handleMoneySelection()">
+                            <option value="10">₹10</option>
+                            <option value="20">₹20</option>
+                            <option value="50">₹50</option>
+                            <option value="100">₹100</option>
+                            <option value="Others">Others</option>
+                        </select>
+                        <input type="number" id="custom-amount" name="custom-amount" placeholder="Enter custom amount" class="input-field" style="display: none;" min="1">
+                    </div>
+                    <button type="submit" class="button">Donate Money</button>
+                </form>
+            </section>
+        </div>
+    </main>
+
+    <%- include("partials/footer.ejs") %>
+
+    <script>
+        // Toggle between donation types
+        function toggleDonationForm(type) {
+            const foodSection = document.getElementById("food-donation");
+            const moneySection = document.getElementById("money-donation");
+
+            if (type === "food") {
+                foodSection.style.display = "block";
+                moneySection.style.display = "none";
+            } else if (type === "money") {
+                foodSection.style.display = "none";
+                moneySection.style.display = "block";
+            }
+        }
+
+        // Handle the "Others" option for food donation
+        function handleFoodSelection() {
+            const foodDropdown = document.getElementById("food-item");
+            const customFoodInput = document.getElementById("custom-food");
+
+            if (foodDropdown.value === "Others") {
+                customFoodInput.style.display = "inline-block";
+            } else {
+                customFoodInput.style.display = "none";
+                customFoodInput.value = ""; // Clear the input field
+            }
+        }
+
+        // Handle the "Others" option for money donation
+        function handleMoneySelection() {
+            const moneyDropdown = document.getElementById("amount");
+            const customAmountInput = document.getElementById("custom-amount");
+
+            if (moneyDropdown.value === "Others") {
+                customAmountInput.style.display = "inline-block";
+            } else {
+                customAmountInput.style.display = "none";
+                customAmountInput.value = ""; // Clear the input field
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,176 @@
+/* General reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;  /* Full viewport height */
+}
+
+/* Header styles */
+/* Header Styles */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: rgb(179, 120, 81);
+    color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+header .logo {
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #fff;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 16px;
+    padding: 8px 12px;
+    transition: background-color 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color: rgb(226, 148, 95);
+    border-radius: 5px;
+}
+
+.right {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.right .login-register {
+    text-decoration: none;
+    color: #fff;
+    padding: 8px 15px;
+    margin-left: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.right .login-register:hover {
+    background-color: rgb(226, 148, 95);
+}
+
+
+/* Main Content Styles */
+main {
+    background-image: url("/images/bg_image.jpg");
+    background-repeat: no-repeat;
+    background-size: 100vw 100vh;
+    padding: 20px;
+    background-color: #f4f4f4;
+    color: black;
+    height: 100vh;
+    width: 100vw;
+}
+.main-content{
+    margin-top: 100px;
+}
+
+.donation-info {
+    text-align: left;  /* Align text to the left */
+    margin-right: 30px; /* Space between description and buttons */
+    flex: 1;  /* Allow description to take up available space */
+    margin-bottom: 30px;
+}
+
+.donation-info h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.donation-info p {
+    font-size: 18px;
+    max-width: 800px;
+    margin: 0;
+    line-height: 1.6;
+}
+
+.donation-buttons {
+    display: flex;
+    flex-direction: row; /* Stack buttons vertically */
+    gap: 30px;
+    align-items: flex-start; /* Left align the buttons */
+}
+
+.button {
+    text-decoration: none;
+    padding: 15px 30px;
+    color: #fff;
+    background-color: rgb(179, 120, 81);  /* Matching your header color */
+    border-radius: 5px;
+    font-size: 18px;
+    margin: 10px 0;  /* Vertical margin between buttons */
+    display: inline-block;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: rgb(226, 148, 95);  /* Lighter brown for hover */
+}
+
+.logout-link{
+    text-decoration: none;
+    color: white;
+}
+
+/* Responsive Styles for Donation Section */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    nav.center ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .right {
+        margin-top: 10px;
+    }
+
+    .right a {
+        margin-left: 0;
+    }
+
+    /* For small screens, adjust the content layout */
+    main {
+        flex-direction: column;  /* Stack content vertically on smaller screens */
+        height: auto; /* Allow content to adjust its height */
+        padding: 20px;
+    }
+
+    .donation-info h1 {
+        font-size: 24px;
+    }
+
+    .donation-info p {
+        font-size: 16px;
+    }
+
+    .button {
+        padding: 12px 25px;
+        font-size: 16px;
+    }
+}

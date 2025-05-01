@@ -1,0 +1,145 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: rgb(179, 120, 81);
+    color: #fff;
+}
+
+header .logo {
+    font-size: 24px;
+    text-decoration: none;
+    color: white;
+}
+
+header nav ul {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+header nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 16px;
+    padding: 8px 12px;
+    transition: background-color 0.3s ease;
+}
+
+header nav ul li a:hover {
+    background-color: rgb(226, 148, 95);
+    border-radius: 5px;
+}
+
+.right .login-register {
+    text-decoration: none;
+    color: white;
+    padding: 8px 15px;
+    margin-left: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: rgb(179, 120, 81);
+    transition: background-color 0.3s ease;
+}
+
+.right .login-register:hover {
+    background-color: rgb(226, 148, 95);
+}
+
+/* Main Content */
+main {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+.request-info h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.request-info p {
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Form Section */
+.request-form-section {
+    max-width: 600px;
+    margin: 0 auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.request-form .form-group {
+    margin-bottom: 15px;
+}
+
+.request-form .form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.request-form .input-field {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.request-form .input-field:focus {
+    outline: none;
+    border-color: rgb(226, 148, 95);
+    box-shadow: 0 0 5px rgb(226, 148, 95);
+}
+
+.button {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    font-size: 18px;
+    background-color: rgb(179, 120, 81);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: rgb(226, 148, 95);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .request-info h1 {
+        font-size: 24px;
+    }
+    .request-info p {
+        font-size: 16px;
+    }
+}
