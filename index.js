@@ -1,10 +1,12 @@
 import express from "express";
 import bodyParser from "body-parser";
 import pg from "pg";
+import pkg from 'pg'; // Import the whole pg package as a default import
 import bcrypt from "bcrypt";
 import session from "express-session";
 import dotenv from "dotenv";
 
+const { Client } = pkg;
 dotenv.config();
 
 
@@ -14,21 +16,28 @@ const saltRounds = 10;
 
 let db;
 if (process.env.DATABASE_URL) {
-  db = new pg.Client({
-    connectionString: process.env.DATABASE_URL,
-    ssl: { rejectUnauthorized: false }
+    db = new pg.Client({
+      connectionString: process.env.DATABASE_URL,
+      ssl: { rejectUnauthorized: false }
+    });
+  } else {
+    db = new Client({
+      user: process.env.DB_USER,
+      host: process.env.DB_HOST,
+      database: process.env.DB_NAME,
+      password: process.env.DB_PASSWORD,
+      port: process.env.DB_PORT || 1234,  // For local dev
+    });
+  }
+  
+
+db.connect()
+  .then(() => {
+    console.log('Connected to the database');
+  })
+  .catch(err => {
+    console.error('Error connecting to the database:', err);
   });
-} else {
-    const db = new pg.Client({
-        user: process.env.DB_USER,
-        host: process.env.DB_HOST,
-        database: process.env.DB_NAME,
-        password: process.env.DB_PASSWORD,
-        port: process.env.DB_PORT,
-      });
-      
-}
-db.connect();
 
 
 app.use(bodyParser.urlencoded({ extended: true }));
