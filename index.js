@@ -3,6 +3,10 @@ import bodyParser from "body-parser";
 import pg from "pg";
 import bcrypt from "bcrypt";
 import session from "express-session";
+import dotenv from "dotenv";
+
+dotenv.config();
+
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -15,13 +19,14 @@ if (process.env.DATABASE_URL) {
     ssl: { rejectUnauthorized: false }
   });
 } else {
-  db = new pg.Client({
-    user: "postgres",
-    host: "localhost",
-    database: "ServeSmile",
-    password: "post1234",
-    port: 1234,
-  });
+    const db = new pg.Client({
+        user: process.env.DB_USER,
+        host: process.env.DB_HOST,
+        database: process.env.DB_NAME,
+        password: process.env.DB_PASSWORD,
+        port: process.env.DB_PORT,
+      });
+      
 }
 db.connect();
 
